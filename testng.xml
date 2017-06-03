@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="Test">
+		<parameter name="platformName" value="Windows" />
+		<parameter name="platformVersion" value="8.1" />
+		<parameter name="browserName" value="Chrome" />
+		<parameter name="browserVersion" value="58" />		
+		<parameter name="screenResolution" value="1280x1024" />
+		<parameter name="proxyLocation" value="brazil" />
+		
+    <classes>
+      <class name="LocalizationTestingPackage.NewTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
