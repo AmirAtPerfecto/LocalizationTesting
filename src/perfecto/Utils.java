@@ -24,7 +24,7 @@ public class Utils {
 		public static RemoteWebDriver getRemoteWebDriver(String platformName, String platformVersion, String manufacturer,
 				String model, String appType, String appID) throws IOException {
 	        System.out.println("Run started");
-
+ 
 	        String browserName = "mobileOS";
 	        DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
 		    

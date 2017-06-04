@@ -23,7 +23,7 @@ public abstract class PerfectoUtils {
 		String response = (String) driver.executeScript("mobile:device:info", params);
 		return response;
 	}
-	
+	 
 	// presskey http://developers.perfectomobile.com/pages/viewpage.action?pageId=13893814
 	public static void pressKey(RemoteWebDriver driver, String sequence){
 		Map<String, Object> params1 = new HashMap<>();
