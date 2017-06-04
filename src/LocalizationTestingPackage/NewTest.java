@@ -58,7 +58,7 @@ public class NewTest {
 		reportiumClient = new ReportiumClientFactory().createPerfectoReportiumClient(perfectoExecutionContext);
 	} 
 
-
+ 
 	
 	@AfterTest
 	public void afterTest() throws IOException {
