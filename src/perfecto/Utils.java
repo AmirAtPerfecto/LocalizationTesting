@@ -1,4 +1,4 @@
-package LocalizationTestingPackage;
+package perfecto;
 
 
 import org.openqa.selenium.Platform;
@@ -8,6 +8,9 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import LocalizationTestingPackage.ProxyProvider;
+import LocalizationTestingPackage.ProxyProvider.ProxyLocation;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,8 +19,6 @@ import java.util.concurrent.TimeUnit;
 //import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Utils {
-	public static enum ProxyLocation {NONE, US, BRAZIL, ARGENTINA, INDONESIA, 
-		RUSSIA, SOUTH_AFRICA, JAPAN, FRANCE, ITALY,MEXICO, BRAZIL_CELLULAR_OI, BRAZIL_CELLULAR_WIND};
 
 	// Appium
 		public static RemoteWebDriver getRemoteWebDriver(String platformName, String platformVersion, String manufacturer,
@@ -89,7 +90,7 @@ public class Utils {
 		capabilities.setCapability("browserName", browserName);
 		capabilities.setCapability("browserVersion", browserVersion);
 		
-		setProxyCapabilities(capabilities, location);
+		ProxyProvider.setProxyCapabilities(capabilities, location);
 		if (!screenResolution.isEmpty()) {
 			capabilities.setCapability("resolution", screenResolution);
 			System.out.println("Creating Remote WebDriver on: " + platformName + " " + platformVersion + ", " + browserName + " " + browserVersion + ", " + screenResolution);
@@ -114,42 +115,6 @@ public class Utils {
 		}
 
 		return webdriver;
-	}
-	private static void setProxyCapabilities(DesiredCapabilities capabilities, ProxyLocation location){
-			if (ProxyLocation.NONE == location || null == location) return;
-			String httpProxy = "37.187.119.226:3128";//"200.229.202.72:8080";//"181.41.197.56:443";//"70.25.66.185:80";//"200.229.202.72:8080";//"70.25.66.185:80";//
-			Proxy proxy = new Proxy();
-			proxy.setProxyType(ProxyType.MANUAL);
-			proxy.setHttpProxy(httpProxy);
-			//		proxy.setSslProxy(sslProxy);
-			//		proxy.setFtpProxy(ftpProxy);
-/*			capabilities.setCapability("java.net.socks.username", "perfectomobile");
-			capabilities.setCapability("java.net.socks.password", "pmPass45");
-			capabilities.setCapability("socksUsername", "perfectomobile");
-			capabilities.setCapability("socksPassword", "pmPass45");
-*/			
-
-			capabilities.setCapability(CapabilityType.PROXY, proxy);
-			capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-	}
-	public static ProxyLocation  mapTestNGLocationToProxyLocation(String testNGLocation ){
-		if (null == testNGLocation) return ProxyLocation.NONE;
-		switch (testNGLocation.toLowerCase()){
-		case "brazil": return ProxyLocation.BRAZIL;
-		case "US": return ProxyLocation.US;
-		case "argentina": return ProxyLocation.ARGENTINA;
-		case "indonesia": return ProxyLocation.INDONESIA;
-		case "russia": return ProxyLocation.RUSSIA;
-		case "south africa": return ProxyLocation.SOUTH_AFRICA;
-		case "japan": return ProxyLocation.JAPAN;
-		case "france": return ProxyLocation.FRANCE;
-		case "italy": return ProxyLocation.ITALY;
-		case "mexico": return ProxyLocation.MEXICO;
-		case "brazil cellular oi": return ProxyLocation.BRAZIL_CELLULAR_OI;
-		case "brazil cellular wind": return ProxyLocation.BRAZIL_CELLULAR_WIND;
-		default: 
-			return ProxyLocation.NONE;
-		}
 	}
 
 }
