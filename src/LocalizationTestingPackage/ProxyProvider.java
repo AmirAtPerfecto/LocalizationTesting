@@ -24,6 +24,7 @@ public abstract class ProxyProvider {
 		private static String getProxyString(ProxyLocation location){
 			if (null == location) return "";
 			switch (location){
+			// from https://www.proxynova.com/proxy-server-list/country-us/
 			case BRAZIL: return "191.7.210.30:3128";
 			case US: return "71.199.12.18:8080";
 			case ARGENTINA: return "181.47.53.129:3128";
