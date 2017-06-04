@@ -29,7 +29,7 @@ public class NewTest {
 
 	        reportiumClient.testStart("ProxyTest", new TestContext("Proxy", "tag3"));
 	        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	        driver.get("https://www.google.fr/#q=amazon");
+	        driver.get("https://www.google.com/#q=amazon");
 			//VisualHandle.enterCredentials(driver, System.getenv().get("PERFECTO_PROXY_USERNAME"), System.getenv().get("PERFECTO_PROXY_PASSWORD"));
 	        //PerfectoUtils.ocrTextCheck(driver, "Log in", 99, 20);
 			driver.executeScript("window.location.href='http://www.whatismyipaddress.com'");
