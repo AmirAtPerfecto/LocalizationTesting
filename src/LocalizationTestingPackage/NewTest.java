@@ -16,7 +16,9 @@ import com.perfecto.reportium.model.PerfectoExecutionContext;
 import com.perfecto.reportium.model.Project;
 import com.perfecto.reportium.test.TestContext;
 
-import LocalizationTestingPackage.Utils.ProxyLocation;
+import LocalizationTestingPackage.ProxyProvider.ProxyLocation;
+import perfecto.PerfectoUtils;
+import perfecto.Utils;
 
 public class NewTest {
 	RemoteWebDriver driver;
@@ -27,7 +29,7 @@ public class NewTest {
 
 	        reportiumClient.testStart("ProxyTest", new TestContext("Proxy", "tag3"));
 	        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	        driver.get("https://www.google.fr/#q=amazon");
+	        driver.get("https://www.google.com/#q=amazon");
 			//VisualHandle.enterCredentials(driver, System.getenv().get("PERFECTO_PROXY_USERNAME"), System.getenv().get("PERFECTO_PROXY_PASSWORD"));
 	        //PerfectoUtils.ocrTextCheck(driver, "Log in", 99, 20);
 			driver.executeScript("window.location.href='http://www.whatismyipaddress.com'");
@@ -45,7 +47,7 @@ public class NewTest {
 	@Parameters({ "platformName", "platformVersion", "browserName", "browserVersion", "screenResolution",  "proxyLocation" })
 	@BeforeTest
 	public void beforeTest(String platformName, String platformVersion, String browserName, String browserVersion, String screenResolution, String proxyLocation) throws IOException {
-		ProxyLocation pLocation= Utils.mapTestNGLocationToProxyLocation(proxyLocation);
+		ProxyLocation pLocation= ProxyProvider.mapTestNGLocationToProxyLocation(proxyLocation);
 		driver = Utils.getRemoteWebDriver(platformName, platformVersion, browserName, browserVersion, screenResolution, pLocation);        
 		PerfectoExecutionContext perfectoExecutionContext = new PerfectoExecutionContext.PerfectoExecutionContextBuilder()
 				.withProject(new Project("My Project", "1.0"))
@@ -56,7 +58,7 @@ public class NewTest {
 		reportiumClient = new ReportiumClientFactory().createPerfectoReportiumClient(perfectoExecutionContext);
 	} 
 
-
+  
 	
 	@AfterTest
 	public void afterTest() throws IOException {
