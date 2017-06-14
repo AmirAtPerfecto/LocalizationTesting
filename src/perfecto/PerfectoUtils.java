@@ -23,7 +23,15 @@ public abstract class PerfectoUtils {
 		String response = (String) driver.executeScript("mobile:device:info", params);
 		return response;
 	}
-	 
+	// http://developers.perfectomobile.com/display/PD/Simulate+Fingerprint+Authentication
+	public static void doFingerprintAuth(RemoteWebDriver driver, String appPackageIdentifier, String state){
+		Map<String, Object> params = new HashMap<>();
+		// use either the "identifier" or "name" parameter to identify the app
+		params.put("identifier", appPackageIdentifier);
+		params.put("resultAuth", state); // may be either "fail" or "success"
+		driver.executeScript("mobile:fingerprint:set", params);
+	}
+
 	// presskey http://developers.perfectomobile.com/pages/viewpage.action?pageId=13893814
 	public static void pressKey(RemoteWebDriver driver, String sequence){
 		Map<String, Object> params1 = new HashMap<>();

@@ -29,20 +29,20 @@ public class NewTest {
 
 	        reportiumClient.testStart("ProxyTest", new TestContext("Proxy", "tag3"));
 	        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	        //driver.get("https://www.google.com/#q=amazon");
-			//VisualHandle.enterCredentials(driver, System.getenv().get("PERFECTO_PROXY_USERNAME"), System.getenv().get("PERFECTO_PROXY_PASSWORD"));
-	        //PerfectoUtils.ocrTextCheck(driver, "Log in", 99, 20);
-			driver.get("https://www.iplocation.net/find-ip-address");
-	        //driver.executeScript("window.location.href='http://www.whatismyipaddress.com'");
+			//driver.get("https://www.iplocation.net/find-ip-address");
+	        driver.executeScript("window.location.href='http://www.whatismyipaddress.com'");
 			
 			Thread.sleep(10000);
-			PerfectoUtils.screenshot(driver);
-			driver.get("http://www.amazon.fr");
-			Thread.sleep(5000);
-			PerfectoUtils.screenshot(driver);
+//			PerfectoUtils.screenshot(driver);
+//			driver.get("http://www.worldtimeserver.com");
+//			Thread.sleep(10000);
+//			PerfectoUtils.screenshot(driver);
 			driver.get("http://www.mastercard.com");
 			PerfectoUtils.screenshot(driver);
-			Thread.sleep(5000);
+			driver.get("http://www.perfectomobile.com");
+			Thread.sleep(10000);
+			driver.get("http://www.singaporeairlines.com");
+			Thread.sleep(10000);
 	}
 		// Create Remote WebDriver based on testng.xml configuration
 	@Parameters({ "platformName", "platformVersion", "browserName", "browserVersion", "screenResolution",  "proxyLocation" })
