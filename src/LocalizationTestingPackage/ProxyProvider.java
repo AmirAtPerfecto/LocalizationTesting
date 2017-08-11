@@ -7,7 +7,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public abstract class ProxyProvider {
 	public static enum ProxyLocation {NONE, US, BRAZIL, ARGENTINA, INDONESIA, CHINA, 
-		RUSSIA, SOUTH_AFRICA, JAPAN, FRANCE, ITALY,MEXICO};//, BRAZIL_CELLULAR_OI, BRAZIL_CELLULAR_WIND};
+		RUSSIA, SOUTH_AFRICA, JAPAN, FRANCE, ITALY,MEXICO, SINGAPORE};//, BRAZIL_CELLULAR_OI, BRAZIL_CELLULAR_WIND};
 
 		public static void setProxyCapabilities(DesiredCapabilities capabilities, ProxyLocation location){
 			if (ProxyLocation.NONE == location || null == location) return;
@@ -26,7 +26,7 @@ public abstract class ProxyProvider {
 				if (null == location) return "";
 				switch (location){
 				// from https://www.proxynova.com/proxy-server-list/country-us/
-				case BRAZIL: return "191.7.210.30:3128";
+				case BRAZIL: return "";
 				case US: return "71.199.12.18:8080";
 				case ARGENTINA: return "181.47.53.129:3128";
 				case INDONESIA: return "119.252.172.133:3128";
@@ -37,6 +37,7 @@ public abstract class ProxyProvider {
 				case FRANCE: return "37.187.119.226:3128";
 				case ITALY: return "37.159.208.218:3128";
 				case MEXICO: return "200.76.251.166:3128";
+				case SINGAPORE: return "";
 				default: 
 					return "";
 				}
@@ -56,6 +57,7 @@ public abstract class ProxyProvider {
 			case "france": return ProxyLocation.FRANCE;
 			case "italy": return ProxyLocation.ITALY;
 			case "mexico": return ProxyLocation.MEXICO;
+			case "singapore": return ProxyLocation.SINGAPORE;
 			default: 
 				return ProxyLocation.NONE;
 			}
