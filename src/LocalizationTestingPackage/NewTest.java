@@ -32,13 +32,13 @@ public class NewTest {
 			//driver.get("https://www.iplocation.net/find-ip-address");
 	        driver.executeScript("window.location.href='http://www.whatismyipaddress.com'");
 			
-			Thread.sleep(10000);
-//			PerfectoUtils.screenshot(driver);
-//			driver.get("http://www.worldtimeserver.com");
 //			Thread.sleep(10000);
 //			PerfectoUtils.screenshot(driver);
+//			Thread.sleep(10000);
+//			PerfectoUtils.screenshot(driver);
+			driver.get("http://www.worldtimeserver.com");
 			driver.get("http://www.mastercard.com");
-			PerfectoUtils.screenshot(driver);
+//			PerfectoUtils.screenshot(driver);
 			driver.get("http://www.perfectomobile.com");
 			Thread.sleep(10000);
 			driver.get("http://www.singaporeairlines.com");
